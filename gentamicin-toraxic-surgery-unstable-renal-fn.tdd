@@ -27,21 +27,20 @@
                 <desc lang='en'>Gentamicin belongs to the class of medicines known as aminoglycoside antibiotics. It works by killing bacteria or preventing their growth. However, this medicine will not work for colds, flu, or other virus infections.</desc>
             </drugDescription>
             <tdmStrategy>
-                <text lang='en'>
-                </text>
+                <text lang='en'>Unknown.</text>
             </tdmStrategy>
         </drug>
         <study>
             <studyName>
                 <name lang='en'>Population pharmacokinetic modelling of gentamicin and
-                    vancomycin in patients with unstable renal function
-                following cardiothoracic surgery</name>
+                                        vancomycin in patients with unstable renal function
+                                following cardiothoracic surgery</name>
             </studyName>
             <studyAuthors>Christine E. Staatz, Colette Byrne  &amp; Alison H. Thomson</studyAuthors>
             <description>
                 <desc lang='en'>To describe the population pharmacokinetics of gentamicin and vancomycin in car-
-                    diothoracic surgery patients with unstable renal function.
-                </desc>
+                                        diothoracic surgery patients with unstable renal function.
+                                </desc>
             </description>
             <references/>
         </study>
@@ -53,317 +52,474 @@
         <domain>
             <description>
                 <desc lang='en'>Male &amp; Females;
-                    Age: 17 to 92
-                    Weight (kg):39 to 138
-                    Height (cm): 135 to 198
-                    For patients with unstable renal function
-                following cardiothoracic surgery</desc>
+                                        Age: 17 to 92
+                                        Weight (kg):39 to 138
+                                        Height (cm): 135 to 198
+                                        For patients with unstable renal function
+                                following cardiothoracic surgery</desc>
             </description>
-            <constraints/>
-        </domain>
-        <covariates/>
-        <activeMoieties>
-            <activeMoiety>
-                <activeMoietyId>
-                </activeMoietyId>
-                <activeMoietyName>
-                    <name lang='en'>
-                    </name>
-                </activeMoietyName>
-                <unit>ug/l</unit>
-                <analyteIdList>
-                    <analyteId>
-                    </analyteId>
-                </analyteIdList>
-                <analytesToMoietyFormula>
-                    <hardFormula>direct</hardFormula>
-                    <comments/>
-                </analytesToMoietyFormula>
-                <targets/>
-            </activeMoiety>
-        </activeMoieties>
-        <analyteGroups>
-            <analyteGroup>
-                <groupId>
-                </groupId>
-                <pkModelId>linear.2comp.macro</pkModelId>
-                <analytes>
-                    <analyte>
-                        <analyteId>
-                        </analyteId>
-                        <unit>ug/l</unit>
-                        <molarMass>
-                            <value>
-                            </value>
-                            <unit>g/mol</unit>
-                        </molarMass>
-                        <description>
-                            <desc lang='en'>
-                            </desc>
-                        </description>
-                        <errorModel>
-                            <errorModelType>
-                            </errorModelType>
-                            <sigmas>
-                                <sigma>
-                                    <standardValue>
-                                    </standardValue>
-                                </sigma>
-                            </sigmas>
+            <constraints>
+                <constraint>
+                    <constraintType>soft</constraintType>
+                    <errorMessage>
+                        <text lang='en'>The present model has been studied in patients from 17 to 87 years.</text>
+                    </errorMessage>
+                    <requiredCovariates>
+                        <covariateId>age</covariateId>
+                    </requiredCovariates>
+                    <checkOperation>
+                        <softFormula>
+                            <inputs>
+                                <input>
+                                    <id>age</id>
+                                    <type>int</type>
+                                </input>
+                            </inputs>
+                            <code>
+                                <![CDATA[return age <= 87 && age >= 17;]]>
+                                </code>
+                            </softFormula>
                             <comments/>
-                        </errorModel>
+                        </checkOperation>
                         <comments/>
-                    </analyte>
-                </analytes>
-                <dispositionParameters>
-                    <parameters>
-                        <parameter>
-                            <parameterId>CL</parameterId>
-                            <unit>l/h</unit>
-                            <parameterValue>
-                                <standardValue>
-                                </standardValue>
-                            </parameterValue>
-                            <bsv>
-                                <bsvType>none</bsvType>
-                            </bsv>
-                            <validation>
-                                <errorMessage>
-                                    <text lang='fr'>
-                                    </text>
-                                </errorMessage>
-                                <operation>
-                                    <softFormula>
-                                        <inputs>
-                                            <input>
-                                                <id>CL</id>
-                                                <type>double</type>
-                                            </input>
-                                        </inputs>
-                                        <code>
-                                            <![CDATA[
-                                            return CL > 0.0;
-                                            ]]>
-                                        </code>
-                                    </softFormula>
-                                    <comments/>
-                                </operation>
-                                <comments/>
-                            </validation>
+                    </constraint>
+                </constraints>
+            </domain>
+            <covariates>
+                <covariate>
+                    <covariateId>age</covariateId>
+                    <covariateName>
+                        <name lang='en'>Age of the patient.</name>
+                    </covariateName>
+                    <description>
+                        <desc lang='en'>Age of the patient in years.</desc>
+                    </description>
+                    <unit>y</unit>
+                    <covariateType>ageInYears</covariateType>
+                    <dataType>double</dataType>
+                    <interpolationType>linear</interpolationType>
+                    <refreshPeriod>
+                        <unit>d</unit>
+                        <value>30</value>
+                    </refreshPeriod>
+                    <covariateValue>
+                        <standardValue>62</standardValue>
+                    </covariateValue>
+                    <validation>
+                        <errorMessage>
+                            <text lang='fr'>The age of the patient should be an integer.</text>
+                        </errorMessage>
+                        <operation>
+                            <softFormula>
+                                <inputs>
+                                    <input>
+                                        <id>age</id>
+                                        <type>int</type>
+                                    </input>
+                                </inputs>
+                                <code>
+                                    <![CDATA[return age >= 0.0;]]>
+                                </code>
+                            </softFormula>
                             <comments/>
-                        </parameter>
-                        <parameter>
-                            <parameterId>V1</parameterId>
-                            <unit>l</unit>
-                            <parameterValue>
-                                <standardValue>
-                                </standardValue>
-                            </parameterValue>
-                            <bsv>
-                                <bsvType>none</bsvType>
-                            </bsv>
-                            <validation>
-                                <errorMessage>
-                                    <text lang='fr'>
-                                    </text>
-                                </errorMessage>
-                                <operation>
-                                    <softFormula>
-                                        <inputs>
-                                            <input>
-                                                <id>V1</id>
-                                                <type>double</type>
-                                            </input>
-                                        </inputs>
-                                        <code>
-                                            <![CDATA[
-                                            return V1 > 0.0;
-                                            ]]>
-                                        </code>
-                                    </softFormula>
-                                    <comments/>
-                                </operation>
-                                <comments/>
-                            </validation>
-                            <comments/>
-                        </parameter>
-                        <parameter>
-                            <parameterId>V2</parameterId>
-                            <unit>l</unit>
-                            <parameterValue>
-                                <standardValue>
-                                </standardValue>
-                            </parameterValue>
-                            <bsv>
-                                <bsvType>none</bsvType>
-                            </bsv>
-                            <validation>
-                                <errorMessage>
-                                    <text lang='fr'>
-                                    </text>
-                                </errorMessage>
-                                <operation>
-                                    <softFormula>
-                                        <inputs>
-                                            <input>
-                                                <id>V2</id>
-                                                <type>double</type>
-                                            </input>
-                                        </inputs>
-                                        <code>
-                                            <![CDATA[
-                                            return V2 > 0.0;
-                                            ]]>
-                                        </code>
-                                    </softFormula>
-                                    <comments/>
-                                </operation>
-                                <comments/>
-                            </validation>
-                            <comments/>
-                        </parameter>
-                        <parameter>
-                            <parameterId>Q</parameterId>
-                            <unit>l</unit>
-                            <parameterValue>
-                                <standardValue>
-                                </standardValue>
-                            </parameterValue>
-                            <bsv>
-                                <bsvType>none</bsvType>
-                            </bsv>
-                            <validation>
-                                <errorMessage>
-                                    <text lang='fr'>
-                                    </text>
-                                </errorMessage>
-                                <operation>
-                                    <softFormula>
-                                        <inputs>
-                                            <input>
-                                                <id>Q</id>
-                                                <type>double</type>
-                                            </input>
-                                        </inputs>
-                                        <code>
-                                            <![CDATA[
-                                            return Q > 0.0;
-                                            ]]>
-                                        </code>
-                                    </softFormula>
-                                    <comments/>
-                                </operation>
-                                <comments/>
-                            </validation>
-                            <comments/>
-                        </parameter>
-                    </parameters>
-                    <correlations/>
-                </dispositionParameters>
-            </analyteGroup>
-        </analyteGroups>
-        <formulationAndRoutes default='id0'>
-            <formulationAndRoute>
-                <formulationAndRouteId>id0</formulationAndRouteId>
-                <formulation>parenteralSolution</formulation>
-                <administrationName>
-                </administrationName>
-                <administrationRoute>intramuscular</administrationRoute>
-                <absorptionModel>extra</absorptionModel>
-                <dosages>
-                    <analyteConversions>
-                        <analyteConversion>
-                            <analyteId>Gentamicine</analyteId>
-                            <factor>1</factor>
-                        </analyteConversion>
-                    </analyteConversions>
-                    <availableDoses>
-                        <unit>mg</unit>
-                        <default>
-                            <standardValue>320</standardValue>
-                        </default>
-                        <rangeValues>
-                            <from>
-                                <standardValue>2</standardValue>
-                            </from>
-                            <to>
-                                <standardValue>20</standardValue>
-                            </to>
-                            <step>
-                                <standardValue>2</standardValue>
-                            </step>
-                        </rangeValues>
-                        <rangeValues>
-                            <from>
-                                <standardValue>20</standardValue>
-                            </from>
-                            <to>
-                                <standardValue>80</standardValue>
-                            </to>
-                            <step>
-                                <standardValue>20</standardValue>
-                            </step>
-                        </rangeValues>
-                        <rangeValues>
-                            <from>
-                                <standardValue>80</standardValue>
-                            </from>
-                            <to>
-                                <standardValue>40</standardValue>
-                            </to>
-                            <step>
-                                <standardValue>1200</standardValue>
-                            </step>
-                        </rangeValues>
-                    </availableDoses>
-                    <availableIntervals>
-                        <unit>h</unit>
-                        <default>
-                            <standardValue>24</standardValue>
-                        </default>
-                    </availableIntervals>
-                    <availableInfusions>
-                        <unit>h</unit>
-                        <default>
-                            <standardValue>1</standardValue>
-                        </default>
-                        <fixedValues>
-                            <value>0.5</value>
-                            <value>1</value>
-                            <value>2</value>
-                        </fixedValues>
-                    </availableInfusions>
+                        </operation>
+                        <comments/>
+                    </validation>
                     <comments/>
-                </dosages>
-                <absorptionParameters/>
-            </formulationAndRoute>
-        </formulationAndRoutes>
-        <timeConsiderations>
-            <halfLife>
-                <unit>h</unit>
-                <duration>
-                    <standardValue>
-                    </standardValue>
-                </duration>
-                <multiplier>
-                </multiplier>
-                <comments>
-                    <comment lang='en'>
-                    </comment>
-                </comments>
-            </halfLife>
-            <outdatedMeasure>
-                <unit>d</unit>
-                <duration>
-                    <standardValue>
-                    </standardValue>
-                </duration>
-                <comments>
-                    <comment lang='en'>
-                    </comment>
-                </comments>
-            </outdatedMeasure>
-        </timeConsiderations>
-        <comments/>
-    </drugModel>
-</model>
+                </covariate>
+                <covariate>
+                    <covariateId>ClCrB</covariateId>
+                    <covariateName>
+                        <name lang='en'>Baseline creatinine clearance.</name>
+                    </covariateName>
+                    <description>
+                        <desc lang='en'>Baseline creatinine clearance of the patient in ml/min.</desc>
+                    </description>
+                    <unit>ml/min</unit>
+                    <covariateType>standard</covariateType>
+                    <dataType>double</dataType>
+                    <interpolationType>linear</interpolationType>
+                    <refreshPeriod>
+                        <unit>d</unit>
+                        <value>30</value>
+                    </refreshPeriod>
+                    <covariateValue>
+                        <standardValue>57</standardValue>
+                    </covariateValue>
+                    <validation>
+                        <errorMessage>
+                            <text lang='en'>The baseline creatinine value should be a positive number.</text>
+                        </errorMessage>
+                        <operation>
+                            <softFormula>
+                                <inputs>
+                                    <input>
+                                        <id>ClCrB</id>
+                                        <type>double</type>
+                                    </input>
+                                </inputs>
+                                <code>
+                                    <![CDATA[return ClCrB > 0.0;]]>
+                                </code>
+                            </softFormula>
+                            <comments/>
+                        </operation>
+                        <comments/>
+                    </validation>
+                    <comments>
+                        <comment lang='en'>If the baseline Creatinine clearance value is not known, it may be estimated as a function of other biophysical parameters such as age, weight and etnicity; but such estimation has not been modeled here.</comment>
+                    </comments>
+                </covariate>
+                <covariate>
+                    <covariateId>ClCr</covariateId>
+                    <covariateName>
+                        <name lang='en'>Change from baseline creatinine clearance.</name>
+                    </covariateName>
+                    <description>
+                        <desc lang='en'>Change from the patient&apos;s baseline creatinine clearance. In patients with an unstable renal function, this value may change every day.</desc>
+                    </description>
+                    <unit>ml/min</unit>
+                    <covariateType>standard</covariateType>
+                    <dataType>double</dataType>
+                    <interpolationType>linear</interpolationType>
+                    <refreshPeriod>
+                        <unit>d</unit>
+                        <value>1</value>
+                    </refreshPeriod>
+                    <covariateValue>
+                        <standardValue>57</standardValue>
+                    </covariateValue>
+                    <validation>
+                        <errorMessage>
+                            <text lang='en'>The current creatinine value should be a number.</text>
+                        </errorMessage>
+                        <operation>
+                            <softFormula>
+                                <inputs>
+                                    <input>
+                                        <id>ClCr</id>
+                                        <type>double</type>
+                                    </input>
+                                </inputs>
+                                <code>
+                                    <![CDATA[return ClCr > 0.0;]]>
+                                </code>
+                            </softFormula>
+                            <comments/>
+                        </operation>
+                        <comments/>
+                    </validation>
+                    <comments/>
+                </covariate>
+            </covariates>
+            <activeMoieties>
+                <activeMoiety>
+                    <activeMoietyId>Gentamicin</activeMoietyId>
+                    <activeMoietyName>
+                        <name lang='en'>Gentamicin.</name>
+                    </activeMoietyName>
+                    <unit>mg/l</unit>
+                    <analyteIdList>
+                        <analyteId>Gentamicin</analyteId>
+                    </analyteIdList>
+                    <analytesToMoietyFormula>
+                        <hardFormula>direct</hardFormula>
+                        <comments/>
+                    </analytesToMoietyFormula>
+                    <targets/>
+                </activeMoiety>
+            </activeMoieties>
+            <analyteGroups>
+                <analyteGroup>
+                    <groupId>Gentamicin</groupId>
+                    <pkModelId>linear.2comp.macro</pkModelId>
+                    <analytes>
+                        <analyte>
+                            <analyteId>Gentamicin</analyteId>
+                            <unit>mg/l</unit>
+                            <molarMass>
+                                <value>477.596</value>
+                                <unit>g/mol</unit>
+                            </molarMass>
+                            <description>
+                                <desc lang='en'>Gentamicin.</desc>
+                            </description>
+                            <errorModel>
+                                <errorModelType>mixed</errorModelType>
+                                <sigmas>
+                                    <sigma>
+                                        <standardValue>0.08</standardValue>
+                                    </sigma>
+                                    <sigma>
+                                        <standardValue>25</standardValue>
+                                    </sigma>
+                                </sigmas>
+                                <comments/>
+                            </errorModel>
+                            <comments/>
+                        </analyte>
+                    </analytes>
+                    <dispositionParameters>
+                        <parameters>
+                            <parameter>
+                                <parameterId>CL</parameterId>
+                                <unit>l/h</unit>
+                                <parameterValue>
+                                    <standardValue>2.82</standardValue>
+                                    <aprioriComputation>
+                                        <softFormula>
+                                            <inputs>
+                                                <input>
+                                                    <id>ClCrB</id>
+                                                    <type>double</type>
+                                                </input>
+                                                <input>
+                                                    <id>ClCr</id>
+                                                    <type>double</type>
+                                                </input>
+                                            </inputs>
+                                            <code>
+                                                <![CDATA[t1 = 2.82;
+                                                t2 = 0.0151;
+                                                t3 = 0.0174;
+                                                ClCrB_median = 63;
+                                                dClCrB = ClCr - ClCrB;
+                                                
+                                                return t1 * (1 + t2 * (ClCrB - ClCrB_median) + t3 * dClCrB);]]>
+                                            </code>
+                                        </softFormula>
+                                        <comments>
+                                            <comment lang='en'>In the paper, the ClCrB value is called BCOV and dClCrB value is called DCOV.</comment>
+                                        </comments>
+                                    </aprioriComputation>
+                                </parameterValue>
+                                <bsv>
+                                    <bsvType>none</bsvType>
+                                </bsv>
+                                <validation>
+                                    <errorMessage>
+                                        <text lang='en'>The drug clearance cannot be negative.</text>
+                                    </errorMessage>
+                                    <operation>
+                                        <softFormula>
+                                            <inputs>
+                                                <input>
+                                                    <id>CL</id>
+                                                    <type>double</type>
+                                                </input>
+                                            </inputs>
+                                            <code>
+                                                <![CDATA[
+                                                return CL > 0.0;
+                                                ]]>
+                                            </code>
+                                        </softFormula>
+                                        <comments/>
+                                    </operation>
+                                    <comments/>
+                                </validation>
+                                <comments/>
+                            </parameter>
+                            <parameter>
+                                <parameterId>V1</parameterId>
+                                <unit>l</unit>
+                                <parameterValue>
+                                    <standardValue>0.243</standardValue>
+                                </parameterValue>
+                                <bsv>
+                                    <bsvType>none</bsvType>
+                                </bsv>
+                                <validation>
+                                    <errorMessage>
+                                        <text lang='en'>The V1 parameter of the bi-compartimental model should be positive.</text>
+                                    </errorMessage>
+                                    <operation>
+                                        <softFormula>
+                                            <inputs>
+                                                <input>
+                                                    <id>V1</id>
+                                                    <type>double</type>
+                                                </input>
+                                            </inputs>
+                                            <code>
+                                                <![CDATA[
+                                                return V1 > 0.0;
+                                                ]]>
+                                            </code>
+                                        </softFormula>
+                                        <comments/>
+                                    </operation>
+                                    <comments/>
+                                </validation>
+                                <comments/>
+                            </parameter>
+                            <parameter>
+                                <parameterId>V2</parameterId>
+                                <unit>l</unit>
+                                <parameterValue>
+                                    <standardValue>0.166</standardValue>
+                                </parameterValue>
+                                <bsv>
+                                    <bsvType>none</bsvType>
+                                </bsv>
+                                <validation>
+                                    <errorMessage>
+                                        <text lang='en'>The V2 parameter of the bi-compartimental model should be positive.</text>
+                                    </errorMessage>
+                                    <operation>
+                                        <softFormula>
+                                            <inputs>
+                                                <input>
+                                                    <id>V2</id>
+                                                    <type>double</type>
+                                                </input>
+                                            </inputs>
+                                            <code>
+                                                <![CDATA[
+                                                return V2 > 0.0;
+                                                ]]>
+                                            </code>
+                                        </softFormula>
+                                        <comments/>
+                                    </operation>
+                                    <comments/>
+                                </validation>
+                                <comments/>
+                            </parameter>
+                            <parameter>
+                                <parameterId>Q</parameterId>
+                                <unit>l</unit>
+                                <parameterValue>
+                                    <standardValue>1.73</standardValue>
+                                </parameterValue>
+                                <bsv>
+                                    <bsvType>none</bsvType>
+                                </bsv>
+                                <validation>
+                                    <errorMessage>
+                                        <text lang='en'>The inter-compartment flow (Q) parameter of the bi-compartimental model should be positive.</text>
+                                    </errorMessage>
+                                    <operation>
+                                        <softFormula>
+                                            <inputs>
+                                                <input>
+                                                    <id>Q</id>
+                                                    <type>double</type>
+                                                </input>
+                                            </inputs>
+                                            <code>
+                                                <![CDATA[
+                                                return Q > 0.0;
+                                                ]]>
+                                            </code>
+                                        </softFormula>
+                                        <comments/>
+                                    </operation>
+                                    <comments/>
+                                </validation>
+                                <comments/>
+                            </parameter>
+                        </parameters>
+                        <correlations/>
+                    </dispositionParameters>
+                </analyteGroup>
+            </analyteGroups>
+            <formulationAndRoutes default='id0'>
+                <formulationAndRoute>
+                    <formulationAndRouteId>id0</formulationAndRouteId>
+                    <formulation>parenteralSolution</formulation>
+                    <administrationName>Intravenous 10min short infusion</administrationName>
+                    <administrationRoute>intramuscular</administrationRoute>
+                    <absorptionModel>bolus</absorptionModel>
+                    <dosages>
+                        <analyteConversions>
+                            <analyteConversion>
+                                <analyteId>Gentamicin</analyteId>
+                                <factor>1</factor>
+                            </analyteConversion>
+                        </analyteConversions>
+                        <availableDoses>
+                            <unit>mg</unit>
+                            <default>
+                                <standardValue>320</standardValue>
+                            </default>
+                            <rangeValues>
+                                <from>
+                                    <standardValue>2</standardValue>
+                                </from>
+                                <to>
+                                    <standardValue>20</standardValue>
+                                </to>
+                                <step>
+                                    <standardValue>2</standardValue>
+                                </step>
+                            </rangeValues>
+                            <rangeValues>
+                                <from>
+                                    <standardValue>20</standardValue>
+                                </from>
+                                <to>
+                                    <standardValue>80</standardValue>
+                                </to>
+                                <step>
+                                    <standardValue>20</standardValue>
+                                </step>
+                            </rangeValues>
+                            <rangeValues>
+                                <from>
+                                    <standardValue>80</standardValue>
+                                </from>
+                                <to>
+                                    <standardValue>40</standardValue>
+                                </to>
+                                <step>
+                                    <standardValue>1200</standardValue>
+                                </step>
+                            </rangeValues>
+                        </availableDoses>
+                        <availableIntervals>
+                            <unit>h</unit>
+                            <default>
+                                <standardValue>24</standardValue>
+                            </default>
+                        </availableIntervals>
+                        <availableInfusions>
+                            <unit>h</unit>
+                            <default>
+                                <standardValue>1</standardValue>
+                            </default>
+                            <fixedValues>
+                                <value>0.5</value>
+                                <value>1</value>
+                                <value>2</value>
+                            </fixedValues>
+                        </availableInfusions>
+                        <comments/>
+                    </dosages>
+                    <absorptionParameters/>
+                </formulationAndRoute>
+            </formulationAndRoutes>
+            <timeConsiderations>
+                <halfLife>
+                    <unit>h</unit>
+                    <duration>
+                        <standardValue>2</standardValue>
+                    </duration>
+                    <multiplier>1</multiplier>
+                    <comments>
+                        <comment lang='en'>Reference value in adults.</comment>
+                    </comments>
+                </halfLife>
+                <outdatedMeasure>
+                    <unit>d</unit>
+                    <duration>
+                        <standardValue>2</standardValue>
+                    </duration>
+                    <comments>
+                        <comment lang='en'>Value should be considered invalid. Avaliable for technical limitations.</comment>
+                    </comments>
+                </outdatedMeasure>
+            </timeConsiderations>
+            <comments/>
+        </drugModel>
+    </model>
